@@ -1,0 +1,86 @@
+@mixin descriptionCommon {
+   color: gray;
+}
+
+@mixin dateCommon {
+   border: 1px solid lightgrey;
+   padding: 6px 10px;
+   border-radius: 5px;
+   font-size: 18px;
+   margin-bottom: 10px;
+}
+@mixin dateSvgCommon {
+   margin-top: 4px;
+   font-size: 20px;
+}
+
+.justify-content-center {
+   margin-bottom: 30px;
+   img {
+      height: 400px;
+   }
+}
+.description {
+   .titleBottom {
+      border-bottom: 1px solid lightgrey;
+      padding-bottom: 10px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      p {
+         margin-bottom: 0px;
+         @include descriptionCommon;
+      }
+   }
+   p {
+      text-align: justify;
+      @include descriptionCommon;
+   }
+   span {
+      font-weight: 500;
+      margin-top: 0px;
+      svg {
+         @include svgStyle;
+      }
+   }
+}
+
+.Calculation{
+   padding: 20px;
+   .head{
+      margin-bottom: 10px;
+      h5 span {
+         font-weight: 300;
+         color: gray;
+      }
+      span {
+         svg {
+            @include svgStyle;
+         }
+      }
+   }
+   #date{
+      @include dateCommon;
+      svg {
+         @include dateSvgCommon;
+      }
+   }
+   ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+      li {
+         border-bottom: 1px solid lightgrey;
+         padding: 6px 10px;
+         margin-top: 8px;
+      }
+      li:last-child {
+         border-bottom: none;
+      }
+   }
+   .submitBtn {
+      @include btnCommonStyle;
+      margin: 10px 0px;
+      width: 100%;
+      padding: 10px;
+   }
+}

@@ -1,0 +1,25 @@
+@mixin textBg {
+   background: $linearColor;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+// span style among the paper
+@mixin spanStyle {
+   font-size: 16px;
+   color: lightgrey;
+}
+
+// Button Common style
+@mixin btnCommonStyle {
+   font-weight: 500 !important;
+   color: white !important;
+   background: $linearColor;
+}
+
+// svg icon common styles
+@mixin svgStyle {
+   font-size: 20px !important;
+   margin-top: -5px;
+   color: rgb(121,239,77) !important;
+}

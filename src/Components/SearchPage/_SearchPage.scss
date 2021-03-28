@@ -1,0 +1,57 @@
+.searchPage {
+   .titleBar {
+      padding: 13px 10px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 6px -1px lightgrey;
+      span {
+         font-weight: 500;
+         padding: 13px 10px;
+         border-right: 1px solid lightgrey;
+      }
+      svg {
+         padding-left: 18px !important;
+         font-size: 48px;
+         color: rgb(121,239,77);
+         cursor: pointer;
+      }
+   }
+
+   .Hotel {
+      margin: 5px 0px;
+      padding: 15px 0px;
+      border-bottom: 1px solid lightgrey;
+      img {
+         border-radius: 10px;
+      }
+      .col-7 {
+         a {
+            color: black;
+            text-decoration: none;
+         }
+         a:hover {
+            h6 {
+               @include textBg;
+            }
+            p {
+               @include textBg;
+            }
+         }
+
+         p {
+            font-size: 14px;
+            margin: 0px 0px;
+            color: gray;
+         }
+         div {
+            margin-top: 5px;
+            span {
+               font-weight: 500;
+               svg {
+                  @include svgStyle;
+               }
+            }
+         }
+      }
+
+   }
+}

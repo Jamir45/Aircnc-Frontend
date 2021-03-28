@@ -1,0 +1,60 @@
+.userForm {
+   .formTitle {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 30px;
+   }
+   .Paper {
+      padding: 10px !important;
+      margin: 10px 0px;
+      input {
+         background: rgb(245, 245, 245);
+         border: none;
+      }
+   }
+   .totalMember {
+      border-bottom: 1px solid lightgrey;
+      margin-bottom: 20px;
+      span {
+         @include spanStyle
+      }
+      p {
+         margin-bottom: 5px;
+      }
+   }
+   .Adult {
+      margin-bottom: 10px;
+   }
+   .Child {
+      small {
+         font-size: 14px !important;
+         @include spanStyle
+      }
+   }
+   p {
+      svg {
+         cursor: pointer;
+         border-radius: 20px;
+         transition: all 0.6s;
+      }
+      svg:hover {
+         background-color: lightgrey;
+      }
+      .number {
+         padding: $numberPadding;
+      }
+   }
+   .applyBtn {
+      border: 2px solid rgb(121,239,77)!important;
+      border-radius: 10px;
+      font-weight: bold;
+      @include textBg;
+   }
+   .searchBtn {
+      @include btnCommonStyle;
+      border-radius: 10px;
+      margin: 20px 0px;
+      width: 100%;
+      padding: 15px 0px;
+   }
+}

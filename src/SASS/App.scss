@@ -1,0 +1,27 @@
+// import common
+@import './Common/variable';
+@import './Common/mixins';
+
+
+// import heder page style
+@import '../Components/Header/Header';
+
+
+// import home page style
+@import '../Components/Home/Sidebar/Sidebar';
+@import '../Components/Home/Showcase/Showcase';
+
+
+// import hotel details page
+@import '../Components/HotelDetails/HotelDetails';
+
+
+// import search page style
+@import '../Components/SearchPage/SearchPage.scss';
+
+
+// import sign_up and login css
+@import '../Components/SignupAndSignin/CommonStyle';
+
+// import stepper section style
+@import '../Components/HotelDetails/StepperSection/StepperSection.scss';

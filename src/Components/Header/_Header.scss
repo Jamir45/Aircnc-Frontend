@@ -1,0 +1,42 @@
+@mixin profileCommon {
+   margin-right: 15px !important;
+}
+
+.navbar {
+   padding: 6px 0px;
+   border-bottom: 1px solid gray;
+   a {
+      h3 {
+         font-size: 32px;
+         font-weight: bold;
+         @include textBg;
+      }
+   }
+   .collapse{
+      ul li {
+         margin: 0px 8px;
+         a {
+            color: black !important;
+            font-weight: 500;
+         }
+         a:hover {
+            @include textBg;
+         }
+      }
+      .userProfile {
+         @include profileCommon;
+      }
+      .userName {
+         font-weight: 500;
+         font-size: 18px;
+         @include profileCommon;
+         @include textBg;
+      }
+      .sigUpBtn {
+         @include btnCommonStyle;
+         border-radius: 25px;
+         margin-top: 2px;
+         padding: 6px 14px;
+      }
+   }
+}

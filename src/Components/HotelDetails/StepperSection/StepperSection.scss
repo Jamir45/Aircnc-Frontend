@@ -1,0 +1,81 @@
+@mixin stepperBtn {
+   margin-top: 20px;
+   margin-bottom: 50px
+}
+
+
+.StepperSection {
+   padding-right: 50px;
+   .Stepper {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+   }
+}
+
+.agreeContinue {
+   padding-top: 20px;
+   p {
+      border-bottom: 1px solid lightgrey;
+      padding-bottom: 15px;
+   }
+   ul {
+      list-style: none;
+      li {
+         padding: 10px 0px;
+         img {
+            width: 28px;
+            margin-right: 8px;
+            border: 1px solid lightgrey;
+            padding: 5px;
+         }
+      }
+   }
+   button {
+      @include stepperBtn;
+      @include btnCommonStyle;
+   }
+}
+.TellUsForm {
+   .text{
+      textarea {
+         width: 100%;
+      }
+      span {
+         color: red;
+      }
+   }
+   button {
+      @include stepperBtn;
+      @include btnCommonStyle;
+   }
+}
+
+.Payment {
+   .membershipForm{
+      padding: 20px 15px;
+      background-color: rgb(235, 235, 235);
+      box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px,
+        rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+   }
+   .StripeElement {
+      display: block;
+      margin: 10px 0px;
+      width: 100%;
+      padding: 12px 3px !important;
+      box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+        rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+      border: 0;
+      outline: 0;
+      border-radius: 4px;
+      background: white;
+   }
+   .payBtn {
+      button {
+         @include stepperBtn;
+         @include btnCommonStyle;
+      }
+   }
+}
+.CardField.CardField--ltr {
+   font-size: 18px;
+}
