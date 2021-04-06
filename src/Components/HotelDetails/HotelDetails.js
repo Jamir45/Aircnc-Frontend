@@ -20,7 +20,7 @@ const HotelDetails = () => {
             <div className='col-md-1'></div>
             <div className="col-md-6">
                
-               {stepperOn && <StepperSection />}
+               {stepperOn && <StepperSection hotel={hotel} />}
                {hotel && !stepperOn && <Description hotel={hotel} />}
                
             </div>

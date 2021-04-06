@@ -4,7 +4,7 @@ import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import HomeData from '../../Data/HotelData';
 
 
@@ -151,7 +151,7 @@ const Contexts = () => {
       firebase.auth().currentUser.getIdToken(true)
       .then((idToken) => {
          sessionStorage.setItem('userToken', idToken)
-         setUser(jwt_decode(idToken))
+         setUser(jwtDecode(idToken))
          redirect()
       }).catch(function(error) {
       // Handle error
@@ -160,9 +160,24 @@ const Contexts = () => {
 
    // Manage Signed User 
    useEffect(() => {
-      const loggedInUser = sessionStorage.getItem('userToken') && jwt_decode(sessionStorage.getItem('userToken'))
+      const loggedInUser = sessionStorage.getItem('userToken') && jwtDecode(sessionStorage.getItem('userToken'))
       setUser(loggedInUser)
    }, [])
+
+   // Clear Token From LocalStorage when expired
+   const token = sessionStorage.getItem('userToken')
+   useEffect(() => {
+      if (token) {
+         const { exp } = jwtDecode(token)
+         if (Date.now() <= exp * 1000) {
+            console.log('Token Valid')
+         }else{
+            console.log('Token Expired')
+            sessionStorage.removeItem('userToken');
+            window.location.pathname = "/"
+         }
+      }
+   }, [token])
 
    // Show Toast Message in Our Component
    const toastMessage = () => {
@@ -186,12 +201,36 @@ const Contexts = () => {
       setHotelsData(HomeData)
    }, [])
 
-   // import user family details from localStorage
-   const [familyData, setFamilyData] = useState({})
+   // get placeBooked data from database
+   const [bookedData, setBookedData] = useState()
    useEffect(() => {
-      const data = JSON.parse(localStorage.getItem('userDetails'))
-      setFamilyData(data)
+      fetch('https://aircnc-backend-server.herokuapp.com/get-placeBooking', {
+         method: 'GET',
+         headers: {
+            'Content-Type':'application/json',
+            'authorization': sessionStorage.getItem('userToken')
+         }
+      })
+      .then(res => res.json())
+      .then(result => {
+         console.log(result)
+         setBookedData(result)
+      })
    }, [])
+   useEffect(() => {
+      fetch('https://aircnc-backend-server.herokuapp.com/get-placeBooking', {
+         method: 'GET',
+         headers: {
+            'Content-Type':'application/json',
+            'authorization': sessionStorage.getItem('userToken')
+         }
+      })
+      .then(res => res.json())
+      .then(result => {
+         console.log(result)
+         setBookedData(result)
+      })
+   }, [user])
 
 
    const [adult, setAdult] = useState(1)
@@ -210,7 +249,6 @@ const Contexts = () => {
       baby, 
       setBaby,
       hotelsData,
-      familyData,
       formData, 
       setFormData,
       stepperOn, 
@@ -225,6 +263,8 @@ const Contexts = () => {
       signWithEmailAndPassword,
       signOut,
       toastMessage,
-      resetPassword
+      resetPassword,
+      bookedData,
+      setBookedData
    }
 }

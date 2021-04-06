@@ -1,5 +1,5 @@
 import { Avatar, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContextData } from '../../ContextProvider/ContextProvider';
 import Rowdra from '../../../images/rowdrow.jpg'
 import StarIcon from '@material-ui/icons/Star';
@@ -17,7 +17,13 @@ const Description = ({hotel}) => {
    const classes = useStyles();
    const {title, detail, rating, price, description} = hotel;
 
-   const {familyData} = useContextData()
+   // import user family details from localStorage
+   const [familyData, setFamilyData] = useState({})
+   useEffect(() => {
+      const data = localStorage.getItem('userDetails') && JSON.parse(localStorage.getItem('userDetails'))
+      setFamilyData(data)
+   }, [])
+
    const {location, arrival, departure, adult, child} = familyData;
 
    return (

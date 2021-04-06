@@ -1,5 +1,5 @@
 import { Button, Paper } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContextData } from '../../ContextProvider/ContextProvider';
 import StarIcon from '@material-ui/icons/Star';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -7,8 +7,14 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const Calculation = ({hotel}) => {
    const {rating, price} = hotel;
+   // import user family details from localStorage
+   const [familyData, setFamilyData] = useState({})
+   useEffect(() => {
+      const data = localStorage.getItem('userDetails') && JSON.parse(localStorage.getItem('userDetails'))
+      setFamilyData(data)
+   }, [])
 
-   const {familyData, stepperOn, setStepperOn} = useContextData()
+   const { stepperOn, setStepperOn} = useContextData()
    const {adult, child, arrival, departure} = familyData
    const totalGuest = adult + child
 

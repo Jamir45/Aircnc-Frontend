@@ -8,7 +8,7 @@ import SigninForm from './SigninForm';
 
 
 const Signin = () => {
-   const contexts = useContextData()
+   const {signWithEmailAndPassword, toastMessage, formLoader, setFormLoader} = useContextData()
 
    const history = useHistory();
    const location = useLocation();
@@ -27,8 +27,8 @@ const Signin = () => {
    const onSubmit = () => {
       console.log(values)
       const {email, password} = values
-      contexts.signWithEmailAndPassword(email, password, redirect)
-      contexts.setFormLoader(true)
+      signWithEmailAndPassword(email, password, redirect)
+      setFormLoader(true)
    };
 
    const handleChange = (prop) => (event) => {
@@ -45,7 +45,7 @@ const Signin = () => {
 
    return (
       <div className="container">
-         {contexts.toastMessage()}
+         {toastMessage()}
          <div className='row signUpSingInForm'>
             <div className='col-md-3'></div>
             <div className='col-md-6'>
@@ -61,7 +61,7 @@ const Signin = () => {
                      handleChange={handleChange}
                      handleClickShowPassword={handleClickShowPassword}
                      handleMouseDownPassword={handleMouseDownPassword}
-                     formLoader={contexts.formLoader}
+                     formLoader={formLoader}
                   ></SigninForm>
 
                   <div className='row orOptionDiv'>

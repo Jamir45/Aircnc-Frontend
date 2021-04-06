@@ -14,7 +14,9 @@ import SearchPage from './Components/SearchPage/SearchPage';
 import Signin from './Components/SignupAndSignin/Signin/Signin';
 import Signup from './Components/SignupAndSignin/Signup/Signup';
 import HotelDetails from './Components/HotelDetails/HotelDetails';
-
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import HostExperience from './Components/HostExperience/HostExperience';
+import Help from './Components/Help/Help'
 
 function App() {
   return (
@@ -34,9 +36,15 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
-          <Route path="/hotel-details/:id">
-            <HotelDetails />
+          <Route path="/host-experience">
+            <HostExperience />
           </Route>
+          <Route path="/help">
+            <Help />
+          </Route>
+          <PrivateRoute path='/hotel-details/:id'>
+            <HotelDetails />
+          </PrivateRoute>
         </Switch>
       </Router>
     </ContextDataProvider>

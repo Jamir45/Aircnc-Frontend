@@ -25,7 +25,7 @@ const UserDetails = () => {
          <User 
             Class='Child' 
             title='CHILD' 
-            age='Age 2-12' 
+            age='Age 5-18' 
             person={child}
             increaseDecrease={setChild}
          />
@@ -33,7 +33,7 @@ const UserDetails = () => {
          <User 
             Class='Child' 
             title='BABY' 
-            age='Younger Than 2' 
+            age='Younger Than 4' 
             person={baby}
             increaseDecrease={setBaby}
          />

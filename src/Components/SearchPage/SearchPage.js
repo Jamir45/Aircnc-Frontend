@@ -5,7 +5,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import { useContextData } from '../ContextProvider/ContextProvider';
 
 const SearchPage = () => {
-   const {familyData} = useContextData()
+   // import user family details from localStorage
+   const [familyData, setFamilyData] = useState({})
+   useEffect(() => {
+      const data = localStorage.getItem('userDetails') && JSON.parse(localStorage.getItem('userDetails'))
+      setFamilyData(data)
+   }, [])
 
    const {location, arrival, departure, adult, child} = familyData;
    const totalGuest = adult + child
@@ -17,10 +22,12 @@ const SearchPage = () => {
    const Date2 = endDate.slice(4, 10)
 
    return (
-      <div className='container searchPage'>
+      <>
+      {
+         familyData && <div className='container searchPage'>
          <div className='text-center pt-3'>
             <span className='titleBar'>
-               <span> {location} </span>
+               <span> {location && location} </span>
                <span> {Date1 +'-'+ Date2} </span>
                <span> {totalGuest + 'Guests'} </span>
                <SearchIcon />
@@ -40,6 +47,8 @@ const SearchPage = () => {
             </div>
          </div>
       </div>
+      }
+      </>
    );
 };
 

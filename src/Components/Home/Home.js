@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContextData } from '../ContextProvider/ContextProvider';
 import Showcase from './Showcase/Showcase';
 import Sidebar from './Sidebar/Sidebar';
 
 const Home = () => {
-   const {toastMessage} = useContextData()
+   const {toastMessage, setStepperOn} = useContextData()
+   useEffect(() => {
+      setStepperOn(false)
+   }, [])
 
    return (
       <div className='container'>

@@ -19,9 +19,7 @@ const useStyles = makeStyles((theme) => ({
    },
  }));
 
-const SigninForm = (
-   {values, handleSubmit, onSubmit, handleChange, handleClickShowPassword, handleMouseDownPassword, formLoader}
-   ) => {
+const SigninForm = ({values, handleSubmit, onSubmit, handleChange, handleClickShowPassword, handleMouseDownPassword, formLoader}) => {
    const classes = useStyles();
 
    

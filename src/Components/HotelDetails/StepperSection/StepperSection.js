@@ -11,7 +11,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { useContextData } from '../../ContextProvider/ContextProvider';
 
 
-function StepperSection() {
+function StepperSection({hotel}) {
    const {formData} = useContextData()
 
    const [activeStep, setActiveStep] = React.useState(0);
@@ -28,7 +28,7 @@ function StepperSection() {
 
    function getSteps() {
       return ['Review House Rules', "Who's coming", 'Confirm and pay'];
-    }
+   }
 
    // Stripe Payment Integration Key 
    const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
@@ -38,10 +38,10 @@ function StepperSection() {
        case 0:
           return <AgreeContinue handleNext={handleNext} />;
        case 1:
-          return <TellUs />;
+          return <TellUs/>;
        default:
           return <Elements stripe={stripePromise}>
-             <Payment></Payment>
+             <Payment hotel={hotel} ></Payment>
           </Elements>;
       }
     }
